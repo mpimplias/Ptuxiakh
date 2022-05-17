@@ -6,12 +6,14 @@ public class Model  {
 
     private int vessels;
     private int timeSlots;
+    int drones;
     private int[][] demand;
 
-    public Model(int vessels , int timeSlots , int[][] demand){
+    public Model(int vessels , int timeSlots , int drones , int[][] demand){
 
         this.vessels = vessels;
         this.timeSlots = timeSlots;
+        this.drones = drones;
         this.demand = demand;
 
     }
@@ -36,7 +38,7 @@ public class Model  {
                     sum.addTerm(1,x[i][j]);
                 }
 
-                cplex.addLe(sum,1);
+                cplex.addLe(sum,drones);
 
             }
 
