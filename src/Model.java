@@ -6,7 +6,7 @@ public class Model  {
 
     private int vessels;
     private int timeSlots;
-    int drones;
+    private int drones;
     private int[][] demand;
 
     public Model(int vessels , int timeSlots , int drones , int[][] demand){
@@ -28,8 +28,15 @@ public class Model  {
             for (int i = 0 ; i < vessels ; i++){
                 for (int j = 0 ; j < timeSlots ; j++){
                     x[i][j] = cplex.boolVar();
+                    //x[i][j] = cplex.numVar(0,drones);
                 }
             }
+
+            /*for (int i = 0 ; i < vessels ; i++){
+                for (int j = 0 ; j < timeSlots ; j++){
+                    cplex.addLe(x[i][j],1);
+                }
+            }*/
 
             for (int j = 0 ; j < timeSlots ; j++){
 
